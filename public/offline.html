@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offline · Routine</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font-family: system-ui, sans-serif; margin: 0; min-height: 100dvh; display: grid; place-items: center; background: #f6f6f3; color: #1c1d1f; }
+      @media (prefers-color-scheme: dark) { body { background: #111213; color: #ecece9; } p { color: #a4a7ad; } }
+      main { max-width: 22rem; padding: 1.5rem; text-align: center; }
+      p { color: #5c6066; }
+      button { margin-top: 1rem; height: 44px; padding: 0 1rem; border-radius: 12px; border: 0; background: #2e6b5a; color: #fff; font: inherit; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Gerade offline</h1>
+      <p>Routine braucht kurz eine Verbindung. Sobald du wieder online bist, geht es weiter.</p>
+      <button type="button" onclick="location.reload()">Erneut versuchen</button>
+    </main>
+  </body>
+</html>

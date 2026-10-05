@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* Dark mode follows data-theme on <html>: "dark", or "system" + OS preference. */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where([data-theme="system"], [data-theme="system"] *) {
+      @slot;
+    }
+  }
+}
+
+:root {
+  --background: #f6f6f3;
+  --surface: #ffffff;
+  --surface-muted: #efefea;
+  --border: #e0e0da;
+  --foreground: #1c1d1f;
+  --muted-foreground: #5c6066;
+  --primary: #2e6b5a;
+  --primary-hover: #255847;
+  --primary-foreground: #ffffff;
+  --ring: #2e6b5a;
+  --overdue: #a8402f;
+  --overdue-soft: #fbece8;
+  --today: #a95207;
+  --today-soft: #fdf0e1;
+  --done: #2b7347;
+  --done-soft: #e5f3ea;
+  --destructive: #b3261e;
+  --destructive-hover: #951f19;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 1px 3px rgb(0 0 0 / 0.06);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --background: #111213;
+  --surface: #1a1b1d;
+  --surface-muted: #232427;
+  --border: #303236;
+  --foreground: #ecece9;
+  --muted-foreground: #a4a7ad;
+  --primary: #6dbba3;
+  --primary-hover: #84c9b4;
+  --primary-foreground: #0b1d17;
+  --ring: #6dbba3;
+  --overdue: #f19a8c;
+  --overdue-soft: #3a211d;
+  --today: #f2aa62;
+  --today-soft: #3a2a17;
+  --done: #79c895;
+  --done-soft: #1b3324;
+  --destructive: #f28b82;
+  --destructive-hover: #f6aca5;
+  --shadow: none;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    --background: #111213;
+    --surface: #1a1b1d;
+    --surface-muted: #232427;
+    --border: #303236;
+    --foreground: #ecece9;
+    --muted-foreground: #a4a7ad;
+    --primary: #6dbba3;
+    --primary-hover: #84c9b4;
+    --primary-foreground: #0b1d17;
+    --ring: #6dbba3;
+    --overdue: #f19a8c;
+    --overdue-soft: #3a211d;
+    --today: #f2aa62;
+    --today-soft: #3a2a17;
+    --done: #79c895;
+    --done-soft: #1b3324;
+    --destructive: #f28b82;
+    --destructive-hover: #f6aca5;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+  --color-overdue: var(--overdue);
+  --color-overdue-soft: var(--overdue-soft);
+  --color-today: var(--today);
+  --color-today-soft: var(--today-soft);
+  --color-done: var(--done);
+  --color-done-soft: var(--done-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
+  --shadow-card: var(--shadow);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}

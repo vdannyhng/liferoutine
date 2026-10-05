@@ -1,0 +1,51 @@
+/** Icon keys stored in the database; the UI maps them to Lucide icons. */
+export const ICON_KEYS = [
+  "home",
+  "dumbbell",
+  "shopping-cart",
+  "trash",
+  "heart",
+  "wrench",
+  "car",
+  "leaf",
+  "wallet",
+  "user",
+  "sparkles",
+  "spray-can",
+  "brush",
+  "bed",
+  "shirt",
+  "bath",
+  "cooking-pot",
+  "refrigerator",
+  "washing-machine",
+  "coffee",
+  "droplets",
+  "recycle",
+  "package",
+  "footprints",
+  "bike",
+  "activity",
+  "book",
+  "pill",
+  "stethoscope",
+  "gauge",
+  "fuel",
+  "flower",
+  "sprout",
+  "receipt",
+  "calendar",
+  "phone",
+  "laptop",
+  "camera",
+  "dog",
+  "sun",
+  "moon",
+  "brain",
+] as const;
+
+export type IconKey = (typeof ICON_KEYS)[number];
+
+export function isIconKey(value: string): value is IconKey {
+  return (ICON_KEYS as readonly string[]).includes(value);
+}
